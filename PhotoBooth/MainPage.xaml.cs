@@ -46,6 +46,7 @@ namespace PhotoBooth
         List<SoftwareBitmap> images = new List<SoftwareBitmap>();
         bool complete = false;
         int[] countdown = { 10, 6, 6, 6 };
+        //int[] countdown = { 3,3,3,3 };
         private DispatcherTimer dispatchTimer = new DispatcherTimer();
         Windows.Storage.StorageFolder savePicturesFolder = KnownFolders.PicturesLibrary; 
 
@@ -245,17 +246,18 @@ namespace PhotoBooth
             {
                 try
                 {
-                    WriteableBitmap outputImage = new WriteableBitmap(images[0].PixelWidth, images[0].PixelHeight * (totpics + 1));
+                    WriteableBitmap outputImage = new WriteableBitmap(images[0].PixelWidth * 2, images[0].PixelHeight * (totpics + 1));
                     WriteableBitmap inputImage = new WriteableBitmap(images[0].PixelWidth, images[0].PixelHeight);
                     const int BYTES_PER_PIXEL = 4;
-                    SoftwareBitmap outputImage2 = new SoftwareBitmap(images[0].BitmapPixelFormat, images[0].PixelWidth, images[0].PixelHeight * (totpics + 1));
+                    SoftwareBitmap outputImage2 = new SoftwareBitmap(images[0].BitmapPixelFormat, images[0].PixelWidth * 2, images[0].PixelHeight * (totpics + 1));
                     int owidth = outputImage.PixelWidth;
                     int oheight = outputImage.PixelHeight;
                     int iwidth = images[0].PixelWidth;
                     int iheight = images[0].PixelHeight;
                     IBuffer inputbuffer = inputImage.PixelBuffer;
                     int bytesperpixel = 4;
-                    int stride = owidth * bytesperpixel;
+                    int istride = iwidth * bytesperpixel;
+                    int ostride = owidth * bytesperpixel;
                     byte[] imgdata = new byte[owidth * oheight * bytesperpixel];
                     byte[] inputdata;
                     int row = 0;
@@ -268,10 +270,16 @@ namespace PhotoBooth
                             for(int col = 0; col < iwidth;col++)
                             {
                                 // BGRA
-                                imgdata[row * stride + col * 4 + 0] = inputdata[(row - (iheight * i)) * stride + col * 4 + 0];
-                                imgdata[row * stride + col * 4 + 1] = inputdata[(row - (iheight * i)) * stride + col * 4 + 1];
-                                imgdata[row * stride + col * 4 + 2] = inputdata[(row - (iheight * i)) * stride + col * 4 + 2];
-                                imgdata[row * stride + col * 4 + 3] = inputdata[(row - (iheight * i)) * stride + col * 4 + 3];
+                                //set left image
+                                imgdata[row * ostride + col * 4 + 0] = inputdata[(row - (iheight * i)) * istride + col * 4 + 0];
+                                imgdata[row * ostride + col * 4 + 1] = inputdata[(row - (iheight * i)) * istride + col * 4 + 1];
+                                imgdata[row * ostride + col * 4 + 2] = inputdata[(row - (iheight * i)) * istride + col * 4 + 2];
+                                imgdata[row * ostride + col * 4 + 3] = inputdata[(row - (iheight * i)) * istride + col * 4 + 3];
+                                //set right image
+                                imgdata[row * ostride + (col + iwidth) * 4 + 0] = inputdata[(row - (iheight * i)) * istride + col * 4 + 0];
+                                imgdata[row * ostride + (col + iwidth) * 4 + 1] = inputdata[(row - (iheight * i)) * istride + col * 4 + 1];
+                                imgdata[row * ostride + (col + iwidth) * 4 + 2] = inputdata[(row - (iheight * i)) * istride + col * 4 + 2];
+                                imgdata[row * ostride + (col + iwidth) * 4 + 3] = inputdata[(row - (iheight * i)) * istride + col * 4 + 3];
                             }
                             row++;
                         }
