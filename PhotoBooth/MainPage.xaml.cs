@@ -312,8 +312,8 @@ namespace PhotoBooth
                 // Set additional encoding parameters, if needed
                 encoder.BitmapTransform.ScaledWidth = (uint)softwareBitmap.PixelWidth;
                 encoder.BitmapTransform.ScaledHeight = (uint)softwareBitmap.PixelHeight;
-                //encoder.BitmapTransform.Rotation = Windows.Graphics.Imaging.BitmapRotation.Clockwise90Degrees;
-                encoder.BitmapTransform.Rotation = 0;
+                encoder.BitmapTransform.Rotation = Windows.Graphics.Imaging.BitmapRotation.Clockwise90Degrees;
+                //encoder.BitmapTransform.Rotation = 0;
                 encoder.BitmapTransform.InterpolationMode = BitmapInterpolationMode.Fant;
                 encoder.IsThumbnailGenerated = true;
 
