@@ -7,18 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="button" Content="Capture Image" HorizontalAlignment="Left" Margin="197,50,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <Image x:Name="image0" HorizontalAlignment="Left" Height="163" Margin="50,87,0,0" VerticalAlignment="Top" Width="265"/>
-        <CaptureElement Name="PreviewControl" Stretch="Uniform" HorizontalAlignment="Left" Height="623" Margin="265,87,0,0" VerticalAlignment="Top" Width="1005"/>
-        <Button x:Name="startPreview" Content="Start/Stop Preview" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.313,0.781" Click="startPreview_Click"/>
-        <Image x:Name="image1" HorizontalAlignment="Left" Height="163" Margin="50,250,0,0" VerticalAlignment="Top" Width="265"/>
-        <Image x:Name="image2" HorizontalAlignment="Left" Height="163" Margin="50,413,0,0" VerticalAlignment="Top" Width="265"/>
-        <Image x:Name="image3" HorizontalAlignment="Left" Height="163" Margin="50,576,0,0" VerticalAlignment="Top" Width="265"/>
+    <Grid Background="Black">
+        <CaptureElement Name="PreviewControl" Stretch="Uniform" HorizontalAlignment="Left" Height="663" Margin="233,16,0,0" VerticalAlignment="Center" Width="1042"/>
+        <Image x:Name="image0" HorizontalAlignment="Left" Height="174" Margin="10,16,0,0" VerticalAlignment="Top" Width="275"/>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="173" Margin="10,190,0,0" VerticalAlignment="Top" Width="275"/>
+        <Image x:Name="image2" HorizontalAlignment="Left" Height="174" Margin="10,363,0,0" VerticalAlignment="Top" Width="275"/>
+        <Image x:Name="image3" HorizontalAlignment="Left" Height="173" Margin="10,537,0,0" VerticalAlignment="Top" Width="275"/>
         <Grid x:Name="StartButton" Tapped="hide_StartButton"  VerticalAlignment="Center" HorizontalAlignment="center">
-            <Ellipse x:Name="sButton" Fill="Black" HorizontalAlignment="Left" Height="435" Stroke="Black" VerticalAlignment="Top" Width="435"/>
+            <Ellipse x:Name="sButton" Fill="Black" Stroke="White" HorizontalAlignment="Left" Height="435" VerticalAlignment="Top" Width="435"/>
             <TextBlock x:Name="textBlock" Foreground="White" FontSize="128" Height="180" TextWrapping="Wrap" Text="Start" VerticalAlignment="Center" HorizontalAlignment="Center" Width="265" RenderTransformOrigin="0.961,1.056"/>
         </Grid>
-        <TextBlock x:Name="cdBox"  HorizontalAlignment="Center" Height="720" TextWrapping="NoWrap" Text="10" FontSize="500" Typography.NumeralStyle="OldStyle" Foreground="White" VerticalAlignment="center" Width="555" Margin="360,0,365,0" Visibility="Collapsed"/> 
+        <TextBlock x:Name="cdBox"  HorizontalAlignment="Center" Height="720" TextWrapping="NoWrap" Text="10" FontSize="500" Typography.NumeralStyle="OldStyle" Foreground="White" VerticalAlignment="center" Width="555" Margin="360,0,365,0" Visibility="Collapsed"/>
     </Grid>
 </Page>
